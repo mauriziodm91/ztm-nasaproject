@@ -16,8 +16,8 @@ app.use(express.json())
 //Serving the frontend folder
 app.use(express.static(path.join(__dirname, '..', 'public')))
 //Routers
-app.use(planetsRouter)
-app.use(launchesRouter)
+app.use('/planets', planetsRouter)
+app.use('/launches', launchesRouter)
 //Assingning index.html to the root path
 app.get('/*', (req, res) => {
   res.sendFile(path.join(__dirname, '..', 'public', 'index.html'))
