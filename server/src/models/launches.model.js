@@ -73,14 +73,14 @@ async function scheduleNewLaunch(launch) {
 async function abortLaunchById(launchId) {
   const aborted = await launchesDatabase.updateOne(
     {
-      launchDate: launchId,
+      flightNumber: launchId,
     },
     {
       upcoming: false,
       success: false,
     }
   )
-  return aborted.ok === 1 && aborted.nModified === 1
+  return aborted.modifiedCount === 1
 }
 
 module.exports = {

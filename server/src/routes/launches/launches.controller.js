@@ -41,9 +41,9 @@ async function httpAbortLaunch(req, res) {
       error: 'Launch Not Found',
     })
   }
-  const aborted = abortLaunchById(launchId)
+  const aborted = await abortLaunchById(launchId)
   if (!aborted) {
-    return res.status(404).json({
+    return res.status(400).json({
       error: 'Launch not aborted',
     })
   }
